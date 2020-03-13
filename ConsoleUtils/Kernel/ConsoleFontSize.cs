@@ -3,10 +3,10 @@
 namespace ConsoleUtils.Kernel
 {
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
-	public struct ConsoleFontSize
+	internal struct ConsoleFontSize
 	{
-		public uint index;
-		public short sizeX;
-		public short sizeY;
+		internal uint index;
+		internal short sizeX;
+		internal short sizeY;
 	}
 }
