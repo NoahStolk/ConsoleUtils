@@ -6,11 +6,11 @@ using Cmd = System.Console;
 
 namespace ConsoleUtils.Colors
 {
-	public static class ColorUtils
+	public static class ConsoleColorUtils
 	{
 		public static List<ConsoleColor> ConsoleColors = new List<ConsoleColor>();
 
-		static ColorUtils()
+		static ConsoleColorUtils()
 		{
 			((ConsoleColor[])Enum.GetValues(typeof(ConsoleColor))).ToList().ForEach(c => ConsoleColors.Add(c));
 		}

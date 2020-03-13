@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace ConsoleUtils.Fonts
 {
-	public static class FontUtils
+	public static class ConsoleFontUtils
 	{
 		private static readonly int TmpfTruetype = 4;
 		private static readonly IntPtr InvalidHandleValue = new IntPtr(-1);
