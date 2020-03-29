@@ -6,22 +6,22 @@ namespace ConsoleUtils.Fonts
 {
 	public static class ConsoleFontUtils
 	{
-		private static readonly int TmpfTruetype = 4;
-		private static readonly IntPtr InvalidHandleValue = new IntPtr(-1);
+		private static readonly int tmpfTruetype = 4;
+		private static readonly IntPtr invalidHandleValue = new IntPtr(-1);
 
 		public static void SetConsoleFont(string fontName, short fontSize, int fontWeight)
 		{
 			unsafe
 			{
 				IntPtr hnd = KernelUtils.GetStdHandle(StdHandle.OutputHandle);
-				if (hnd != InvalidHandleValue)
+				if (hnd != invalidHandleValue)
 				{
 					ConsoleFontInfoEx info = new ConsoleFontInfoEx();
 					info.cbSize = (uint)Marshal.SizeOf(info);
 
 					ConsoleFontInfoEx newInfo = new ConsoleFontInfoEx();
 					newInfo.cbSize = (uint)Marshal.SizeOf(newInfo);
-					newInfo.fontFamily = TmpfTruetype;
+					newInfo.fontFamily = tmpfTruetype;
 					IntPtr ptr = new IntPtr(newInfo.faceName);
 					Marshal.Copy(fontName.ToCharArray(), 0, ptr, fontName.Length);
 
