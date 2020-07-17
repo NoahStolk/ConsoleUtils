@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleUtils", "ConsoleUtils\ConsoleUtils.csproj", "{4B1955E4-D0F0-419B-889B-2A2DD9D54620}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetBase", "..\NetBase\NetBase\NetBase.csproj", "{CF2D375B-20DC-4C10-879C-F9CC1B9029FE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,14 +21,6 @@ Global
 		{4B1955E4-D0F0-419B-889B-2A2DD9D54620}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4B1955E4-D0F0-419B-889B-2A2DD9D54620}.Release|x86.ActiveCfg = Release|x86
 		{4B1955E4-D0F0-419B-889B-2A2DD9D54620}.Release|x86.Build.0 = Release|x86
-		{CF2D375B-20DC-4C10-879C-F9CC1B9029FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF2D375B-20DC-4C10-879C-F9CC1B9029FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF2D375B-20DC-4C10-879C-F9CC1B9029FE}.Debug|x86.ActiveCfg = Debug|x86
-		{CF2D375B-20DC-4C10-879C-F9CC1B9029FE}.Debug|x86.Build.0 = Debug|x86
-		{CF2D375B-20DC-4C10-879C-F9CC1B9029FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF2D375B-20DC-4C10-879C-F9CC1B9029FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF2D375B-20DC-4C10-879C-F9CC1B9029FE}.Release|x86.ActiveCfg = Release|x86
-		{CF2D375B-20DC-4C10-879C-F9CC1B9029FE}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
