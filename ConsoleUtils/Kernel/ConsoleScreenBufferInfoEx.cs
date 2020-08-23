@@ -5,29 +5,30 @@ namespace ConsoleUtils.Kernel
 	[StructLayout(LayoutKind.Sequential)]
 	internal struct ConsoleScreenBufferInfoEx
 	{
-		internal int cbSize;
-		internal Coord dwSize;
-		internal Coord dwCursorPosition;
-		internal ushort wAttributes;
-		internal SmallRect srWindow;
-		internal Coord dwMaximumWindowSize;
-		internal ushort wPopupAttributes;
-		internal bool bFullscreenSupported;
-		internal ColorReference black;
-		internal ColorReference darkBlue;
-		internal ColorReference darkGreen;
-		internal ColorReference darkCyan;
-		internal ColorReference darkRed;
-		internal ColorReference darkMagenta;
-		internal ColorReference darkYellow;
-		internal ColorReference gray;
-		internal ColorReference darkGray;
-		internal ColorReference blue;
-		internal ColorReference green;
-		internal ColorReference cyan;
-		internal ColorReference red;
-		internal ColorReference magenta;
-		internal ColorReference yellow;
-		internal ColorReference white;
+		internal int _cbSize;
+		internal Coord _dwSize;
+		internal Coord _dwCursorPosition;
+		internal ushort _wAttributes;
+		internal SmallRect _srWindow;
+		internal Coord _dwMaximumWindowSize;
+		internal ushort _wPopupAttributes;
+		internal bool _bFullscreenSupported;
+
+		internal ColorReference _black;
+		internal ColorReference _darkBlue;
+		internal ColorReference _darkGreen;
+		internal ColorReference _darkCyan;
+		internal ColorReference _darkRed;
+		internal ColorReference _darkMagenta;
+		internal ColorReference _darkYellow;
+		internal ColorReference _gray;
+		internal ColorReference _darkGray;
+		internal ColorReference _blue;
+		internal ColorReference _green;
+		internal ColorReference _cyan;
+		internal ColorReference _red;
+		internal ColorReference _magenta;
+		internal ColorReference _yellow;
+		internal ColorReference _white;
 	}
 }
