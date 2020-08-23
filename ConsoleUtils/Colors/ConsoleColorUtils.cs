@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ConsoleUtils.Kernel;
+using System;
+using System.Runtime.InteropServices;
 using Cmd = System.Console;
 
 namespace ConsoleUtils.Colors
 {
 	public static class ConsoleColorUtils
 	{
-		public static List<ConsoleColor> ConsoleColors = new List<ConsoleColor>();
-
-		static ConsoleColorUtils()
-		{
-			((ConsoleColor[])Enum.GetValues(typeof(ConsoleColor))).ToList().ForEach(c => ConsoleColors.Add(c));
-		}
-
 		public static void WriteColor(string message, ConsoleColor color)
 		{
 			Cmd.ForegroundColor = color;
@@ -23,7 +16,7 @@ namespace ConsoleUtils.Colors
 
 		public static void WriteLineColor(string message, ConsoleColor color)
 		{
-			WriteColor($"{message}\n", color);
+			WriteColor($"{message}{Environment.NewLine}", color);
 		}
 
 		public static void WriteColorMultiple(params MessagePart[] messageParts)
@@ -48,6 +41,47 @@ namespace ConsoleUtils.Colors
 			Cmd.SetCursorPosition(0, Cmd.CursorTop);
 			Cmd.Write(new string(' ', Cmd.BufferWidth));
 			Cmd.SetCursorPosition(0, currentLineCursor - offset);
+		}
+
+		public static int ModifyConsoleColor(ConsoleColor color, byte r, byte g, byte b)
+		{
+			ConsoleScreenBufferInfoEx csbe = new ConsoleScreenBufferInfoEx();
+			csbe.cbSize = Marshal.SizeOf(csbe);
+			IntPtr hConsoleOutput = NativeMethods.GetStdHandle(StdHandle.OutputHandle);
+			if (hConsoleOutput == new IntPtr(-1))
+				return Marshal.GetLastWin32Error();
+
+			bool brc = NativeMethods.GetConsoleScreenBufferInfoEx(hConsoleOutput, ref csbe);
+			if (!brc)
+				return Marshal.GetLastWin32Error();
+
+			switch (color)
+			{
+				case ConsoleColor.Black: csbe.black = new ColorReference(r, g, b); break;
+				case ConsoleColor.DarkBlue: csbe.darkBlue = new ColorReference(r, g, b); break;
+				case ConsoleColor.DarkGreen: csbe.darkGreen = new ColorReference(r, g, b); break;
+				case ConsoleColor.DarkCyan: csbe.darkCyan = new ColorReference(r, g, b); break;
+				case ConsoleColor.DarkRed: csbe.darkRed = new ColorReference(r, g, b); break;
+				case ConsoleColor.DarkMagenta: csbe.darkMagenta = new ColorReference(r, g, b); break;
+				case ConsoleColor.DarkYellow: csbe.darkYellow = new ColorReference(r, g, b); break;
+				case ConsoleColor.Gray: csbe.gray = new ColorReference(r, g, b); break;
+				case ConsoleColor.DarkGray: csbe.darkGray = new ColorReference(r, g, b); break;
+				case ConsoleColor.Blue: csbe.blue = new ColorReference(r, g, b); break;
+				case ConsoleColor.Green: csbe.green = new ColorReference(r, g, b); break;
+				case ConsoleColor.Cyan: csbe.cyan = new ColorReference(r, g, b); break;
+				case ConsoleColor.Red: csbe.red = new ColorReference(r, g, b); break;
+				case ConsoleColor.Magenta: csbe.magenta = new ColorReference(r, g, b); break;
+				case ConsoleColor.Yellow: csbe.yellow = new ColorReference(r, g, b); break;
+				case ConsoleColor.White: csbe.white = new ColorReference(r, g, b); break;
+			}
+
+			++csbe.srWindow.bottom;
+			++csbe.srWindow.right;
+			brc = NativeMethods.SetConsoleScreenBufferInfoEx(hConsoleOutput, ref csbe);
+			if (!brc)
+				return Marshal.GetLastWin32Error();
+
+			return 0;
 		}
 	}
 }

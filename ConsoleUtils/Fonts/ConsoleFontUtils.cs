@@ -13,7 +13,7 @@ namespace ConsoleUtils.Fonts
 		{
 			unsafe
 			{
-				IntPtr hnd = KernelUtils.GetStdHandle(StdHandle.OutputHandle);
+				IntPtr hnd = NativeMethods.GetStdHandle(StdHandle.OutputHandle);
 				if (hnd != invalidHandleValue)
 				{
 					ConsoleFontInfoEx info = new ConsoleFontInfoEx();
@@ -27,7 +27,7 @@ namespace ConsoleUtils.Fonts
 
 					newInfo.dwFontSize = new Coord(fontSize, fontSize);
 					newInfo.fontWeight = fontWeight;
-					KernelUtils.SetCurrentConsoleFontEx(hnd, false, ref newInfo);
+					NativeMethods.SetCurrentConsoleFontEx(hnd, false, ref newInfo);
 				}
 			}
 		}
