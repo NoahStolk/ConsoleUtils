@@ -41,7 +41,7 @@ namespace ConsoleUtils.Colors
 			Cmd.SetCursorPosition(0, currentLineCursor - offset);
 		}
 
-		public static int ModifyConsoleColor(ConsoleColor color, byte r, byte g, byte b)
+		public static int ModifyConsoleColor(byte colorIndex, byte r, byte g, byte b)
 		{
 			ConsoleScreenBufferInfoEx csbe = new ConsoleScreenBufferInfoEx();
 			csbe._cbSize = Marshal.SizeOf(csbe);
@@ -53,24 +53,24 @@ namespace ConsoleUtils.Colors
 			if (!brc)
 				return Marshal.GetLastWin32Error();
 
-			switch (color)
+			switch (colorIndex)
 			{
-				case ConsoleColor.Black: csbe._black = new ColorReference(r, g, b); break;
-				case ConsoleColor.DarkBlue: csbe._darkBlue = new ColorReference(r, g, b); break;
-				case ConsoleColor.DarkGreen: csbe._darkGreen = new ColorReference(r, g, b); break;
-				case ConsoleColor.DarkCyan: csbe._darkCyan = new ColorReference(r, g, b); break;
-				case ConsoleColor.DarkRed: csbe._darkRed = new ColorReference(r, g, b); break;
-				case ConsoleColor.DarkMagenta: csbe._darkMagenta = new ColorReference(r, g, b); break;
-				case ConsoleColor.DarkYellow: csbe._darkYellow = new ColorReference(r, g, b); break;
-				case ConsoleColor.Gray: csbe._gray = new ColorReference(r, g, b); break;
-				case ConsoleColor.DarkGray: csbe._darkGray = new ColorReference(r, g, b); break;
-				case ConsoleColor.Blue: csbe._blue = new ColorReference(r, g, b); break;
-				case ConsoleColor.Green: csbe._green = new ColorReference(r, g, b); break;
-				case ConsoleColor.Cyan: csbe._cyan = new ColorReference(r, g, b); break;
-				case ConsoleColor.Red: csbe._red = new ColorReference(r, g, b); break;
-				case ConsoleColor.Magenta: csbe._magenta = new ColorReference(r, g, b); break;
-				case ConsoleColor.Yellow: csbe._yellow = new ColorReference(r, g, b); break;
-				case ConsoleColor.White: csbe._white = new ColorReference(r, g, b); break;
+				case 0: csbe._black = new ColorReference(r, g, b); break;
+				case 1: csbe._darkBlue = new ColorReference(r, g, b); break;
+				case 2: csbe._darkGreen = new ColorReference(r, g, b); break;
+				case 3: csbe._darkCyan = new ColorReference(r, g, b); break;
+				case 4: csbe._darkRed = new ColorReference(r, g, b); break;
+				case 5: csbe._darkMagenta = new ColorReference(r, g, b); break;
+				case 6: csbe._darkYellow = new ColorReference(r, g, b); break;
+				case 7: csbe._gray = new ColorReference(r, g, b); break;
+				case 8: csbe._darkGray = new ColorReference(r, g, b); break;
+				case 9: csbe._blue = new ColorReference(r, g, b); break;
+				case 10: csbe._green = new ColorReference(r, g, b); break;
+				case 11: csbe._cyan = new ColorReference(r, g, b); break;
+				case 12: csbe._red = new ColorReference(r, g, b); break;
+				case 13: csbe._magenta = new ColorReference(r, g, b); break;
+				case 14: csbe._yellow = new ColorReference(r, g, b); break;
+				case 15: csbe._white = new ColorReference(r, g, b); break;
 			}
 
 			++csbe._srWindow._bottom;
